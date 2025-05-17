@@ -22,33 +22,58 @@ void moverBispoRecursivo(int casas) {
 }
 
 
-    // Movimento da Rainha (horizontalmente para a esquerda) - usando 'do-while'
-    printf("Movimento da Rainha:\n");
+    // --- Movimento da Rainha com Recursividade ---
+void moverRainhaRecursivo(int casas) {
+    if (casas > 0) {
+        printf("Esquerda\n");
+        moverRainhaRecursivo(casas - 1);
+    }
+}
+
+int main() {
+    //  Movimento da Torre (Recursivo) 
+    printf("Movimento da Torre (Recursivo):\n");
+    int casasTorre = 5;
+    moverTorreRecursivo(casasTorre);
+    printf("\n");
+
+     // --- Movimento do Bispo (Recursivo com Loops Aninhados) ---
+    printf("Movimento do Bispo (Recursivo com Loops Aninhados):\n");
+    int casasBispo = 5;
+    moverBispoRecursivo(casasBispo);
+    printf("\n");
+
+    // --- Movimento da Rainha (Recursivo) ---
+    printf("Movimento da Rainha (Recursivo):\n");
     int casasRainha = 8;
-    int movimentoRainha = 0;
-    do {
-        printf("Esquerda\n");
-        movimentoRainha++;
-    } while (movimentoRainha < casasRainha);
+    moverRainhaRecursivo(casasRainha);
     printf("\n");
 
-    // Movimento do Cavalo (duas casas para baixo e uma para a esquerda) - usando 'for' e 'while' 
-    printf("Movimento do Cavalo:\n");
-    int movimentoCavaloTotal = 3; // O Cavalo se move 3 "casas" no total (2 + 1)
-    int passosCavalo = 0; // variével passosCavalo
+    // --- Movimento do Cavalo (Loops Aninhados Complexos) ---
+    printf("Movimento do Cavalo (Loops Aninhados Complexos):\n");
+    int movimentoCavaloTotal = 3;
+    int passos = 0;
 
-    // Primeiro, move duas casas para baixo (usando um loop for - controla o número de passos nessa direção)
-    for (int i = 0; i < 2; i++) {
-        printf("Baixo\n");
-        passosCavalo++;
-    }
-
-    // Depois, move uma casa para a esquerda (usando um loop while para controlar esse passo final)
-    while (passosCavalo < movimentoCavaloTotal) {
-        printf("Esquerda\n");
-        passosCavalo++;
+    // Loop externo para controlar o número total de "etapas" do movimento
+    for (int i = 0; passos < movimentoCavaloTotal; i++) {
+        // Loop interno para simular as duas casas para cima
+        int cima = 0;
+        while (cima < 2 && passos < movimentoCavaloTotal) {
+            printf("Cima\n");
+            passos++;
+            cima++;
+            if (cima == 2 && passos < movimentoCavaloTotal) {
+                // Após duas para cima, move uma para a direita
+                for (int direita = 0; direita < 1; direita++) {
+                    printf("Direita\n");
+                    passos++;
+                    if (passos == movimentoCavaloTotal) break; // Sai do loop interno
+                }
+            }
+        }
+        if (passos == movimentoCavaloTotal) break; // Sai do loop externo
     }
     printf("\n");
-    
+
     return 0;
 }
