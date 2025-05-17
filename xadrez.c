@@ -1,23 +1,26 @@
 #include <stdio.h>
 
-int main() {
-    // Movimento da Torre (horizontalmente para a direita) - utilizando 'for'
-    printf("Movimento da Torre:\n");
-    int casasTorre = 5;
-    for (int i = 0; i < casasTorre; i++) {
+// --- Movimento da Torre com Recursividade ---
+void moverTorreRecursivo(int casas) {
+    if (casas > 0) {
         printf("Direita\n");
+        moverTorreRecursivo(casas - 1);
     }
-    printf("\n");
+}
+    // Movimento do Bispo com Recursividade e Loops 
+void moverBispoRecursivo(int casas) {
+    if (casas > 0) {
+        // Loop mais externo para simular um "passo" na diagonal (vertical)
+        for (int i = 0; i < 1; i++) {
+            // Loop mais interno para simular a instrução "horizontal" do movimento diagonal
+            for (int j = 0; j < 1; j++) {
+                printf("Cima, Direita\n");
+            }
+        }
+        moverBispoRecursivo(casas - 1);
+    }
+}
 
-    // Movimento do Bispo (diagonalmente para cima e à direita) - usando 'while'
-    printf("Movimento do Bispo:\n");
-    int casasBispo = 5;
-    int movimentoBispo = 0;
-    while (movimentoBispo < casasBispo) {
-        printf("Cima, Direita\n");
-        movimentoBispo++;
-    }
-    printf("\n");
 
     // Movimento da Rainha (horizontalmente para a esquerda) - usando 'do-while'
     printf("Movimento da Rainha:\n");
