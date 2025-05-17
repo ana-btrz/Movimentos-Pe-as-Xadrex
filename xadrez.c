@@ -17,3 +17,17 @@ int main() {
         printf("Cima, Direita\n");
         movimentoBispo++;
     }
+    printf("\n");
+
+    // Movimento da Rainha (horizontalmente para a esquerda) - usando 'do-while'
+    printf("Movimento da Rainha:\n");
+    int casasRainha = 8;
+    int movimentoRainha = 0;
+    do {
+        printf("Esquerda\n");
+        movimentoRainha++;
+    } while (movimentoRainha < casasRainha);
+    printf("\n");
+
+    return 0;
+}
